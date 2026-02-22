@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Research Portal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f6f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+            max-width: 900px;
+        }
+
+        button {
+            padding: 10px 18px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background: #34495e;
+        }
+
+        #downloadLink {
+            display: none;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        #downloadLink:hover {
+            background: #219150;
+        }
+
+        table {
+            margin-top: 25px;
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+            padding: 10px;
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            border-radius: 4px;
+            color: #1b5e20;
+            font-size: 0.95em;
+        }
+
+        .downloads-section {
+            margin-top: 30px;
+            border-top: 2px solid #bbb;
+            padding-top: 20px;
+        }
+
+        .file-list {
+            margin-top: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .file-item {
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #27ae60;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .file-meta {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 4px;
+        }
+
+        .file-download-btn {
+            padding: 6px 12px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .file-download-btn:hover {
+            background: #219150;
+        }
+
+        .no-files {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Financial Extraction Dashboard</h1>
+
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Extract Financials</button>
+
+    <p id="status"></p>
+
+    <!-- Excel Download Button -->
+    <a id="downloadLink" target="_blank">
+        ⬇️ Download Excel File
+    </a>
+
+    <table id="resultTable" style="display:none;">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Downloads Section -->
+    <div class="downloads-section">
+        <h2>📥 Download Previously Generated Files</h2>
+        <button onclick="loadDownloads()" style="margin-bottom: 10px;">Refresh Downloads</button>
+        <ul id="fileList" class="file-list">
+            <li class="no-files">Loading...</li>
+        </ul>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+    // Load downloads when page loads
+    window.addEventListener('load', loadDownloads);
+</script>
+</body>
+</html>
